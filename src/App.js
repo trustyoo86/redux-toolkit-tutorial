@@ -5,11 +5,11 @@ import { Provider } from 'react-redux';
 
 // component
 import Main from './pages/Main';
-import counter from './counter';
+import store from './stores';
 
 function App() {
   return (
-    <Provider store={counter}>
+    <Provider store={store}>
       <Main />
     </Provider>
   );
