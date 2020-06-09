@@ -1,5 +1,16 @@
 'use strict';
 
 module.exports = {
-  presets: ['env', 'react'],
+  presets: [
+    [
+      '@babel/preset-env',
+      {
+        useBuiltIns: 'entry',
+      },
+    ],
+    '@babel/preset-react',
+  ],
+  plugins: [
+    '@babel/plugin-transform-runtime',
+  ],
 };

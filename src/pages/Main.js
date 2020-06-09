@@ -5,12 +5,9 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { counterSlice } from '../stores/counter';
 
-function Main(props) {
-
+function Main() {
   const dispatch = useDispatch();
-  const counter = useSelector((store) => {
-    return store.counter;
-  });
+  const counter = useSelector(store => store.counter.counter);
 
   function clickHandler(type) {
     if (type === 'plus') {
