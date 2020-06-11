@@ -33,7 +33,9 @@ export const counterSlice = createSlice({
   },
   extraReducers: {
     [getApiTest.fulfilled]: (state, action) => {
-      state.data.concat(action.payload);
+      console.log('payload ===>', action.payload);
+      state.data = action.payload;
+      // state.data.push(action.payload);
     },
   },
 });
