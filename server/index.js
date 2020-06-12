@@ -10,8 +10,16 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
+const mocks = testMock;
+
 app.get('/api/test', (req, res) => {
-  res.status(200).json(testMock);
+  res.status(200).json(mocks);
+});
+
+app.post('/api/test', (req, res) => {
+  const data = req.body;
+  mocks.push(data);
+  res.status(200).json({ msg: 'success' });
 });
 
 app.listen(4000, () => {

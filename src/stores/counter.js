@@ -13,17 +13,27 @@ const crCounter = createReducer(0, {
   [decrement]: state => state.counter - 1,
 });
 
+const url = 'http://localhost:4000/api/test';
+
 export const getApiTest = createAsyncThunk(
-  'api/test',
+  'api/get/test',
   async () => {
-    const response = await axios.get('http://localhost:4000/api/test');
+    const response = await axios.get(url);
     return response.data;
   }
 );
 
+export const postApiTest = createAsyncThunk(
+  'api/post/test',
+  async (data) => {
+    const res = await axios.post(url, data);
+    return res.data;
+  }
+)
+
 export const counterSlice = createSlice({
   name: 'counter',
-  initialState: { 
+  initialState: {
     counter: 0,
     data: [],
   },
@@ -36,6 +46,10 @@ export const counterSlice = createSlice({
       console.log('payload ===>', action.payload);
       state.data = action.payload;
       // state.data.push(action.payload);
+    },
+    [postApiTest.fulfilled]: (state, action) => {
+      console.log('payload ===>', action.payload);
+      console.log('state', state);
     },
   },
 });
