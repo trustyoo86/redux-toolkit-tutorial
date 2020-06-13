@@ -1,5 +1,6 @@
 'use strict';
 
+
 import { createAction, createReducer, createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
@@ -25,8 +26,9 @@ export const getApiTest = createAsyncThunk(
 
 export const postApiTest = createAsyncThunk(
   'api/post/test',
-  async (data) => {
+  async (data, thunk) => {
     const res = await axios.post(url, data);
+    thunk.dispatch(getApiTest());
     return res.data;
   }
 )
