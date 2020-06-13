@@ -21,7 +21,6 @@ function Main() {
   function postApiAction() {
     const data = { id: 7, title: '테스트1' };
     dispatch(postApiTest(data));
-    dispatch(getApiTest());
   }
 
   useEffect(() => {
