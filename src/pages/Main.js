@@ -1,6 +1,6 @@
 'use strict';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { counterSlice, getApiTest, postApiTest } from '../stores/counter';
@@ -23,10 +23,13 @@ function Main() {
     dispatch(postApiTest(data));
   }
 
-  useEffect(() => {
+  const getTest = useCallback(() => {
     dispatch(getApiTest());
-    console.log('data ===>', data);
   }, []);
+
+  useEffect(() => {
+    getTest();
+  }, [getTest]);
 
   return (
     <div>
